@@ -1,0 +1,44 @@
+package com.xyz.pedestal.entity;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "pedestals",
+        uniqueConstraints = @UniqueConstraint(
+                name = "uk_pedestal_serial_number", columnNames = "serial_number"))
+public class Pedestal {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "serial_number", nullable = false, length = 50)
+    private String serialNumber;
+
+    @Column(nullable = false, length = 100)
+    private String name;
+
+    @Column(name = "port_id", nullable = false)
+    private Long portId;
+
+    @Column(nullable = false, length = 50)
+    private String pontoon;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private PedestalStatus status;
+
+    public Pedestal() {}
+
+    public Long getId() { return id; }
+    public String getSerialNumber() { return serialNumber; }
+    public void setSerialNumber(String serialNumber) { this.serialNumber = serialNumber; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public Long getPortId() { return portId; }
+    public void setPortId(Long portId) { this.portId = portId; }
+    public String getPontoon() { return pontoon; }
+    public void setPontoon(String pontoon) { this.pontoon = pontoon; }
+    public PedestalStatus getStatus() { return status; }
+    public void setStatus(PedestalStatus status) { this.status = status; }
+}
