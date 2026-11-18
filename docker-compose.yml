@@ -9,6 +9,16 @@ services:
     ports:
       - "5433:5432"
 
+  postgres-pedestal:
+    image: postgres:16
+    container_name: postgres-pedestal
+    environment:
+      POSTGRES_DB: pedestaldb
+      POSTGRES_USER: pedestal
+      POSTGRES_PASSWORD: pedestal123
+    ports:
+      - "5434:5432"
+
   kafka:
     image: apache/kafka:latest
     container_name: kafka
